@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    command:
+      [ "bash", "-c", "rm -f tmp/pids/server.pid; RAILS_ENV=development rails s -b 0.0.0.0" ]
+    volumes:
+      - .:/rspec-example-1
+      - bundle:/usr/local/bundle
+volumes:
+  bundle:

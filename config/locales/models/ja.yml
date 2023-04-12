@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      item: 備品
+    attributes:
+      user:
+        id: ID
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+      item:
+        id: ID
+        name: 備品名
+        note: 備考
