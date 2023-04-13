@@ -5,15 +5,28 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <% if current_user %>
-      <%= link_to 'トップ', root_path %>
-      <%= button_to 'ログアウト', logout_path, method: :delete %>
-    <% end %>
-    <%= yield %>
+    <header class="bg-white shadow">
+      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <a href="<%= root_path%>">
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900">備品管理</h1>
+        </a>
+        <% if current_user %>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <%= button_to 'ログアウト', logout_path, method: :delete, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        </div>
+        <% end %>
+      </div>
+    </header>
+    <main>
+      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

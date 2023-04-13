@@ -13,13 +13,13 @@
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
-    文字数:<%= @user.name.size %>
+    文字数:<%= @user.name&.size || 0 %>
   </div>
 
   <div>
     <%= form.label :email, style: "display: block" %>
     <%= form.text_field :email %>
-    文字数:<%= @user.email.size %>
+    文字数:<%= @user.email&.size || 0 %>
   </div>
 
   <div>
@@ -28,6 +28,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit nil, class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
   </div>
 <% end %>

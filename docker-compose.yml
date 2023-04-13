@@ -6,9 +6,10 @@ services:
     ports:
       - "3000:3000"
     command:
-      [ "bash", "-c", "rm -f tmp/pids/server.pid; RAILS_ENV=development rails s -b 0.0.0.0" ]
+      [ "bash", "-c", "rm -f tmp/pids/server.pid; bin/dev" ]
     volumes:
       - .:/rspec-example-1
       - bundle:/usr/local/bundle
+    tty: true
 volumes:
   bundle:

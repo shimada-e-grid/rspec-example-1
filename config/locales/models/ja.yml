@@ -13,3 +13,4 @@ ja:
         id: ID
         name: 備品名
         note: 備考
+        user_id: 管理者

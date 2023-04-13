@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Items</h1>
+<h1>備品一覧</h1>
 
 <div id="items">
   <% @items.each do |item| %>
     <%= render item %>
     <p>
-      <%= link_to "Show this item", item %>
+      <%= link_to "詳細", item, class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New item", new_item_path %>
+<%= link_to "登録", new_item_path, class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>

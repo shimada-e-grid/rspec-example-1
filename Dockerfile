@@ -24,4 +24,4 @@ ADD . /rspec-example-1
 EXPOSE 3000
 
 # サーバの起動コマンド
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/dev"]
