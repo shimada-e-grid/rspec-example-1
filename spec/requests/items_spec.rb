@@ -13,17 +13,22 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/items", type: :request do
-  
+
   # This should return the minimal set of attributes required to create a valid
   # Item. As you add validations to Item, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:item)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    build(:item, name: "a"*11)
   }
+
+  let!(:user) {create(:user)}
+  before do
+    post login_url, params: { user: {email: user.email, password: user.password} }
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -77,12 +82,12 @@ RSpec.describe "/items", type: :request do
         }.to change(Item, :count).by(0)
       end
 
-    
+
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post items_url, params: { item: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
+
     end
   end
 
@@ -108,13 +113,13 @@ RSpec.describe "/items", type: :request do
     end
 
     context "with invalid parameters" do
-    
+
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         item = Item.create! valid_attributes
         patch item_url(item), params: { item: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
+
     end
   end
 
