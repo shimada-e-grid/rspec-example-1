@@ -25,16 +25,16 @@ RSpec.describe Item, type: :model do
         end
       end
 
-      describe '最大10文字' do
-        context '10文字の場合' do
+      describe '最大15文字' do
+        context '15文字の場合' do
           it '有効' do
-            item.name = 'a'*10
+            item.name = 'a'*15
             expect(item).to be_valid
           end
         end
-        context '11文字の場合' do
+        context '16文字の場合' do
           it '無効' do
-            item.name = 'a'*11
+            item.name = 'a'*16
             expect(item).to be_invalid
           end
         end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
     end
     it 'nameがサンプルであること' do
       # 実行結果
-      expect(item.name).to eq 'サンプル'
+      expect(item.name).to eq 'これはサンプルの備品です！'
     end
     it 'バリデーションが有効であること' do
       # 実行結果
